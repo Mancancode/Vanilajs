@@ -1,0 +1,142 @@
+html{
+    font-size: 10px;
+    background: #e7e5e7;
+
+}
+body{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+main{
+    max-width: 50rem;
+    max-height: 50%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: #a86353;
+    color:whitesmoke;
+    padding: 3rem 1.6rem 6rem 1.6rem;
+    border-radius: 4rem;
+}
+
+.logo{
+text-align: center;
+max-width: 20px;
+max-height: 50px;
+padding-left: 100px;
+z-index: 0;
+}
+
+h1{
+    margin:0 ;
+    padding-bottom: 5rem;
+    margin-top: 0px;
+    text-align: center;
+    color: #f07237;
+}
+
+form{
+    text-align: center;
+}
+label{
+    font-size: 15px;
+    font-weight: 800;
+}
+input[type="number"] {
+    border: 1px solid lightblue;
+    border-radius: 1rem;
+    font-family: inherit;
+    background: #ab6d9d;
+    color: white;
+    width: 80%;
+    margin: 1rem 0;
+    padding: 0.8rem 0;
+    font-size: 1.2rem;
+    text-align: center;
+}
+button{
+    font-size: 1.4rem;
+    height: 60px;
+    width: 60px;
+    border: none;
+    font-weight: bolder;
+    border-radius: 40%;
+    background: #f07237;
+    cursor: pointer;
+    margin: 5px 0;
+}
+ul{
+    display: flex;
+    padding: 0 auto;
+    list-style: none;
+    justify-content: space-between;
+}
+li{
+    border: 1px solid;
+    padding: 1rem 1.5rem;
+}
+
+.entriesWrapper{
+    padding: 5px 0;
+    text-align: center;
+}
+.data{
+    font-size: 1.4rem;
+}
+.data div{
+    background: #ab6d9d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0.5rem 0;
+    padding: 0 1rem;
+
+}
+.progress{
+    text-align: center;
+    padding-bottom:1rem;
+    padding-bottom: 0;
+}
+.progress h3{
+    font-size:1.6rem;
+    font-weight: lighter;
+}
+.progressCirleWrapper{
+    display: flex;
+    justify-content: center;
+   
+
+}
+
+#progressCircle{
+    border-left-width: 100px;
+    padding-left: 0px;
+    width: 250px;
+    margin-left: 80px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    /* background: conic-gradient(#70db70 50%, #2d3740 50%); */
+    justify-content: center;
+    display: flex;
+    align-items: center;
+
+}
+
+#progressCenter{
+
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: #1c1424 ;
+    justify-content: center;
+    display: flex
+}
+
+@media screen and (min-width: 760px) {
+    .logo{
+        max-width: 40%;
+    }
+
+    
+}
