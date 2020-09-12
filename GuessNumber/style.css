@@ -1,0 +1,112 @@
+:root{
+    --green: #83e1c8;
+    --darkgreen: rgb(1, 19, 19);
+    --salmon: salmon;
+    --light-gray: rgb(158, 145, 155);
+
+
+    
+}
+
+html{
+    font-size: 10px;
+    font: 300;
+    background: var(--darkgreen);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+body{
+    max-width: 50vw;
+    max-height: 50%; 
+    margin: 2rem auto;
+    
+    
+}
+main{
+    text-align: center;
+    border: solid var(--salmon);
+    border-width: 0 8px 8px 8px;
+    min-height: 80vh;
+    padding: 1rem;
+    border-radius: 0 0 3rem 3rem;
+    padding: 1rem;
+    background: var(--light-gray);     
+}
+
+h2{
+    font-size: 2.2rem;
+    margin: 8rem 0;
+}
+p{
+    font-size: 1.8rem;
+}
+
+.buttonWrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    border: none;
+    cursor: pointer;
+    padding: 20px;
+    background: var(--green);
+    border-radius: 1rem 1rem 0 0;
+}
+
+button:last-child{
+    background: var(--salmon);
+    border-radius: 0 0 1rem 1rem;
+}
+
+h3{
+    font-size: 2rem;
+
+}
+
+input{
+    border: 1px solid lightblue;
+    background: transparent;
+    margin: 2rem 0;
+    padding: 1rem 0;
+    width: 16rem;
+    text-align: center;
+
+}
+
+.range{
+    display: flex;
+    background: var(--green);
+    height: 50px;
+    padding: 0;
+    margin: 0 0 4rem 0;
+}
+
+#rangeOutput{
+    font-size: 1.6rem;
+}
+
+.stats{
+    text-align: center;
+}
+
+.info{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.info span{
+    font-size: i.6rem;
+}
+#newGameButton{
+    border-radius: 0;
+}
+
+@media (min-widt: 862px) {
+    body{
+        width: 60vw;
+    }
+
+}
