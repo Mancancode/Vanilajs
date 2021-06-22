@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Guess Number</title>
+</head>
+<body onload="init()">
+   
+    <main>
+        <div  id="welcomeScreen">
+                <h2>Guess the Random number  <br>between 1-100</h2>
+                <section >
+                    <p>Select difficulty setting:</p>
+                    <div class="buttonWrapper">
+                            <button onclick="easyMode()" >Easy: 10 attemps</button>
+                            <button onclick="hardMode()" >Hard: 5 attempss</button>
+                    </div>
+                    
+                </section>
+        </div>
+        
+        <!-- Second Screen when the game starts -->
+        <div id="gameArea">
+             
+            <button id="newGameButton" onclick="newGame" > NEW GAME</button>
+            <section>
+                    <h3 id="textOutput">Your Guess</h3>
+                    <input type="number" id="inputBox" min="1" max="100" onchange="compareGuess()"/>
+            </section>
+
+            <section>
+                <p>Current range :</p>
+                <span class="rangeOutput">1 - 100 </span>
+                    <div class="range">
+                        <span id="low"></span>
+                        <span id="space"></span>
+                        <span id="high"></span>
+                    </div>
+               
+            </section>
+
+            <section class="stats">
+                <div class="info">
+                    <p> Number Of prevoius attempts </p>
+                    <span id="attempts">0</span>
+                </div>
+
+                <div class="info">
+                        <p> Number Of prevoius guesses</p>
+                        <span id="guesses">-</span>
+                    </div>
+            </section>
+
+            
+        </div>
+        
+    </main> 
+    
+    <script src="app.js"></script>
+</body>
+
+</html>

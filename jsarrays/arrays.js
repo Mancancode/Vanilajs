@@ -46,7 +46,6 @@ console.log(heightLess200);
 
 
 
-
 //*REDUCE*/
 //GET TOTAL MASS OF ALL CHARACTERS
 const totalMass = characters.reduce((acc, cur) => acc + cur.mass, 0);
@@ -76,3 +75,25 @@ console.log(everyCharless200);
 
 const everyCharMale = characters.every((character) => character.gender === 'male');
 console.log(everyCharMale);
+
+
+//*Array MAP()*/
+//GET ARRAY OF NAMES 
+const names = characters.map(character => character.name);
+console.log(names);
+
+//Get ARRAY OF HEIGHTS 
+const heights = characters.map(character => character.height);
+console.log(heights);
+
+//GET ARRAY OF OBJECT WITH JUST NAMES AND HEIGHT 
+const records = characters.map(character => ({
+    name: character.name,
+    height: character.height
+    }));
+console.log(records);
+
+//GET ALL THE FIRST NAMES
+
+const fNames = characters.map(character => character.name.split(" ")[0]);
+console.log(fNames);
