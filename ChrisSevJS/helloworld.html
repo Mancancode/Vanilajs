@@ -1,51 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <title>GETTING STARTED WITH JAVASCRIPT</title>
-</head>
-<body>
-    <h1>hello </h1>
+  </head>
+  <body>
+    <!--using DOM option 1 --  -->
+    <div class="jumbotron text-center">
+      <button class="btn btc-danger" onclick="goCoocoo()">Go Coocoo</button>
+    </div>
+
+    <!--using DOM option 2 -- use events directly on the element in js -->
+    <div class="jumbotron text-center">
+      <button class="btn btc-danger coffee-btn">Get Coffee</button>
+
+      <button class="btn btc-danger coffee-btn">Get Coffee</button>
+
+      <button class="btn btc-danger coffee-btn">Get Coffee</button>
+    </div>
+
+     <!--using DOM option 3 using AddEventListner --  -->
+     <div class="jumbotron text-center">
+        <button class="btn btc-primary lala-btn">
+            Not Listening
+        </button>
+      </div>
 
     <script>
-        //===============types and variables=================//
-        //object
-        const user = {
-            name: 'ebuka',
-            username: 'chris',
-        }
-        //console.log(user)
+      //===============types and variables=================//
+      //object
+      const user = {
+        name: "ebuka",
+        username: "chris",
+      };
+      //console.log(user)
 
-        //array
-        const users = ['man','50','work','20']
-        // console.log(users[2])
+      //array
+      const users = ["man", "50", "work", "20"];
+      // console.log(users[2])
 
-    //arraysOfObjects
+      //object
+      const Hero = {
+        //property etc
+        alais: "Bat man",
+        name: "Bruce wyne",
+        catchphrase: "back to the dack cave",
 
-    const superUser = [
-        {name: 'ebuka'},
-        {name: 'best'},
-        {name: 'frank'}
+        //this is called a method instaed of {function} b/c is in an object
+        speak: function () {
+          return "attention" + this.catchphrase;
+        },
+        attack: function (sound) {
+          //this is called a method instaed of {function} b/c is in an object
+          // return 'punched bad guy' + sound;
+          return `(punches bad guys) ${sound}`;
+        },
+      };
+      ///ways to call an object
+      console.log(Hero.name);
+      console.log(Hero["alais"]);
 
-    ]
-    // console.log(superUser[1].name)
+      //ways to call a method
+      console.log(Hero.speak());
+      console.log(Hero.attack("powww"));
 
-    //declaring a varriable  
-    const otherThings = 'seconder';
-    let LookHer = 'third';
+      //Built in arrays
+      const myArr = ["ebuka", "emeka", "ugo"]; //this is a functional programing
+      myArr.forEach(function (user) {
+        console.log(user);
+      });
+      //arraysOfObjects
 
-    lookHer = 'forth'
+      const superUser = [
+        { name: "ebuka" },
+        { name: "best" },
+        { name: "frank" },
+      ];
+      // console.log(superUser[1].name)
 
-    let frachaise;
+      //declaring a varriable
+      const otherThings = "seconder";
+      let LookHer = "third";
 
-    frachaise = 'spiderMan'
+      lookHer = "forth";
 
+      let frachaise;
 
+      frachaise = "spiderMan";
+
+      //DOM and DOM even
+
+      // option 1
+      function goCoocoo() {
+        document.body.style.background = "#C00C00";
+      }
+
+      //option 2 ======================================
+      const CoffeeButtons = document.querySelectorAll(".coffee-btn");
+      // CoffeeButton.onclick = function(){
+      //     document.body.style.backgroundColor ='#CDB699'
+      // }
+
+      function getcoffee() {
+        document.body.style.backgroundColor = "#CDB699";
+      }
+
+      CoffeeButtons.forEach(function (button) {
+        button.onclick = getcoffee;
+      });
+
+      //Option 3 ======================================
+      //grab the class 'lala-btn'
+      const lalaButton = document.querySelector('.lala-btn')
+
+      //write a function 
+      function notlistning(){
+          document.body.style.background = "#403948"
+      }
+
+      //then use the AddEventListener
+      lalaButton.addEventListener('click', notlistning)
 
     </script>
-    
-</body>
+  </body>
 </html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title>crazy button</title>
+    <style>
+        body, .jumbotron {padding:30px;}
+        .text-gaint { font-size: 40px;}
+        .btn-crazy{
+            position: absolute;
+            top: 30px;
+            width: 20%;
+            left: 40%;
+            text-align: center;
+            transition: 0.5s ease all;
+        }
+    </style>
+</head>
+<body>
+
+    <button type="button" class="btn-lg btn btn-crazy btn-danger "> 
+        click me 
+    </button>
+
+    <button type="button" class="btn-lg btn btn-crazy btn-success "> 
+        click me 
+    </button>
+
+    <button type="button" class="btn-lg btn btn-crazy btn-primary "> 
+        click me 
+    </button>
+    
+
+
+    <script>
+        //catch everything  needed
+        const crazyButtons = document.querySelectorAll('.btn-crazy');
+
+        //write all funtions
+        function buttonHover(){
+            //get a random number for top and left offset
+            const buttonLeft = Math.random() * window.innerWidth - this.clientWidth;
+            const buttonTop = Math.random() * window.innerHeight - this.clientHeight;
+
+
+            //apply that number to the button
+            this.style.left = buttonLeft + 'px' ;
+            this.style.top = buttonTop + 'px';
+
+        }
+
+
+        //call all event listeners
+        crazyButtons.forEach(button => button.addEventListener('mouseenter', buttonHover));
+            </script>
+</body>
+</html>
