@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="index.css" />
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
     <title>GETTING STARTED WITH JAVASCRIPT</title>
   </head>
   <body>
@@ -24,12 +27,10 @@
       <button class="btn btc-danger coffee-btn">Get Coffee</button>
     </div>
 
-     <!--using DOM option 3 using AddEventListner --  -->
-     <div class="jumbotron text-center">
-        <button class="btn btc-primary lala-btn">
-            Not Listening
-        </button>
-      </div>
+    <!--using DOM option 3 using AddEventListner --  -->
+    <div class="jumbotron text-center">
+      <button class="btn btc-primary lala-btn">Not Listening</button>
+    </div>
 
     <script>
       //===============types and variables=================//
@@ -116,16 +117,15 @@
 
       //Option 3 ======================================
       //grab the class 'lala-btn'
-      const lalaButton = document.querySelector('.lala-btn')
+      const lalaButton = document.querySelector(".lala-btn");
 
-      //write a function 
-      function notlistning(){
-          document.body.style.background = "#403948"
+      //write a function
+      function notlistning() {
+        document.body.style.background = "#403948";
       }
 
       //then use the AddEventListener
-      lalaButton.addEventListener('click', notlistning)
-
+      lalaButton.addEventListener("click", notlistning);
     </script>
   </body>
 </html>

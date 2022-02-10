@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <title>Accordion</title>
+
+    <style>
+      body,
+      .jumbotron {
+        padding: 30px;
+      }
+      html {
+        overflow-y: scroll;
+      }
+      body {
+        background: #efefef;
+      }
+
+      ul {
+        margin-bottom: 0;
+      }
+
+      .accordion {
+        background: #fef;
+        border-radius: 5px;
+        padding: 30px;
+      }
+
+      .question {
+        border-top: 1px solid #eee;
+        padding: 20px;
+        cursor: pointer;
+        position: relative;
+      }
+      .question h2 {
+        font-size: 20px;
+        margin: 0;
+        color: #c00c00;
+      }
+
+      .question .glyphicon {
+        position: absolute;
+        height: 100%;
+        top: 0;
+        right: 20px;
+        display: flex;
+        align-items: center;
+        color: deeppink;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+
+      .answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+      }
+      .answer p {
+        padding: 20px;
+      }
+
+      .accordion li.open .question .glyphicon {
+        transform: rotate(180deg);
+      }
+
+      .accordion li.open .answer {
+        max-height: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="accordion">
+        <ul class="list-styled">
+          <li class="open">
+            <div class="question">
+              <h2>Javascript is awesome.</h2>
+              <span class="glyphicon glyphicon-chevron-down"> </span>
+            </div>
+            <div class="answer">
+              <p>
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+              </p>
+            </div>
+
+            <div class="question">
+              <h2>Python is notch.</h2>
+              <span class="glyphicon glyphicon-chevron-down"> </span>
+            </div>
+            <div class="answer">
+              <p>
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+              </p>
+            </div>
+
+            <div class="question">
+              <h2>PHP is good for now.</h2>
+              <span class="glyphicon glyphicon-chevron-down"> </span>
+            </div>
+            <div class="answer">
+              <p>
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+                hello how far.. , i check the page but is not showing things
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script>
+      //grab all needed
+      const accordion = document.querySelector(".accordion");
+      const items = accordion.querySelectorAll("li");
+      const questions = accordion.querySelectorAll(".question");
+
+      // write function
+      function toggleAccordion() {
+        const thisItem = this.parentNode;
+        items.forEach((item) => {
+          if (thisItem == item) {
+            thisItem.classList.toggle("open");
+            return;
+          }
+          item.classList.remove("open");
+        });
+      }
+
+      //add event listeners
+      questions.forEach((question) =>
+        question.addEventListener("click", toggleAccordion)
+      );
+    </script>
+  </body>
+</html>

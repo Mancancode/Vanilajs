@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <title>stop watch</title>
+
+    <style>
+        body, .jumbotron {padding: 30px}
+        .timer {font-size: 120px;}
+    </style>
+</head>
+<body>
+
+    <div class="jumbotron text-center" >
+
+        <div class="timer">
+            <span>00<span class="menutes">:</span class="seconds">00</span>
+        </div>
+    
+        <div class="timer-button">
+            <!--use data type-->
+            <button class="btn btn-success btn-lg" data-action='start' >Start</button>
+            <button class="btn btn-lg  btn-danger" data-action='stop'>Stop</button>
+            <button class="btn btn-link btn-block" data-action='reset'>Reset</button>
+        </div>
+
+
+    </div>
+
+
+    <script>
+        // grab everythin we need
+
+    const startButton = document.querySelector('[data-action="start"]');
+    const stopButton = document.querySelector('[data-action="stop"]');
+    const resetButton = document.querySelector('[data-action="reset"]');
+    const minutes = document.querySelector('.minutes');
+    const seconds = document.querySelector('.seconds');
+
+    //we add an iterator  so it will be chaning 
+    let timerTime = 00;
+
+    let interval;
+    let isRuning = false;                      //varaible 
+ 
+
+    //wrie your functions
+    function startTimer(){
+        if (isRuning) return;
+        isRuning = true;
+        interval = setInterval(increamentTimer, 1000);
+
+    }
+
+    function stopTimer(){
+        isRuning = false;
+        clearInterval(interval)    //this is a js function 
+    }
+
+    function resetTimer(){
+        stopTimer();
+        timerTime = 0;
+        minutes.innerText = '00';
+        seconds.innerText = '00';
+
+    }
+
+    function increamentTimer(){
+        timerTime++; 
+
+        const numOfMinutes = Math.floor(timerTime / 60);
+        const numOfSeconds = timerTime % 60;       //modula function
+
+
+        minutes.innerText = pad(numOfMinutes);
+        seconds.innerText = pad(numOfSeconds);
+
+
+
+    }
+
+    function pad(number){
+        return (number < 10) ? '0' + number : number;          //tenary operator
+        // if (number < 10){
+        //     return '0' + number;
+        // } else{
+        //     return number;
+        // }
+    };
+
+
+    //add eventListieners 
+    startButton.addEventListener('click', startTimer);
+    stopButton.addEventListener('click', stopTimer);
+    resetButton.addEventListener('click', resetTimer);
+   
+
+    </script>
+    
+
+    
+</body>
+</html>
