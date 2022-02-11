@@ -1,87 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     />
     <title>Bookmark</title>
-    
+
     <style>
-        body, .jumbotron {padding: 30px;}
-        body {
-            background: url('images/pexels-pixabay-163036.jpg');
-            background-size: cover;
-        }
-        .floater{
-            background: #fff;
-            font-size: 20px;
-            line-height: 1.5;
-            border-radius: 5px;
-            max-width: 500px;
-            margin: 0 auto;
-            position: relative;
+      body,
+      .jumbotron {
+        padding: 30px;
+      }
+      body {
+        background: url("images/pexels-pixabay-163036.jpg");
+        background-size: cover;
+      }
+      .content {
+        font-size: 20px;
+        line-height: 1.5;
+        margin: 0 auto;
+        position: relative;
+        max-width: 500px;
 
-        }
+      }
+      .floater {
+        background: #fff;
+        border-radius: 5px;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+        margin-bottom: 30px;
+        z-index: 11;
+       
+      }
 
-        .floater input[type=text]{
-            padding: 30px 20px;
-            border: none;
-            box-shadow: none;
-            font-size: 14px;
-            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4)all;
-        }
+      .floater input[type="text"] {
+        padding: 30px 20px;
+        border: none;
+        box-shadow: none;
+        font-size: 14px;
+        transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.4) all;
+      }
 
-        .floater-bottom{
-            padding: 6px 10px 7px;
-            text-align: right;
-            border-top: 1px;
-            border-top: 1px solid#ddd;
-        }
+      .floater-bottom {
+        padding: 6px 10px 7px;
+        text-align: right;
+        border-top: 1px;
+        border-top: 1px solid#ddd;
+      }
 
-        .floater-bottom button{
-            padding: 4px 8px;
-            font-size: 10px;
-        }
+      .floater-bottom button {
+        padding: 4px 8px;
+        font-size: 10px;
+      }
 
-        .overlay{
-            position: fixed;
-            top: 0;
-            left: 0;
-            background: rgba(0, 0, 0, 0.89);
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            opacity: 0;
-        }
+      .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.89);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        opacity: 0;
+        z-index:10;
+        pointer-events: none;
+      }
 
-        body.show-floater .flaoter{
-            transform: scal(1.2);
-        }
-        body.show-floater .floater input[type=text] {
-            padding: 50px 20px;
-            font-size: 18px;
-        }
-        body.show-floater .overlay {
-            opacity: 1;
-        }
+      body.show-floater .flaoter {
+        transform: scal(1.1);
+        padding-bottom: 20px;
+      }
+      body.show-floater .floater input[type="text"] {
+        padding: 50px 20px;
+        font-size: 18px;
+      }
+      body.show-floater .overlay {
+        opacity: 1;
+        pointer-events: all;
+      }
+
+      .bookmarks-list{
+          z-index: 9;
+          position: relative;
+         
+      }
+      .bookmark{
+          display: block;
+          background: #fff;
+          color: #999;
+          transition: 0.3s ease all;
+          padding: 20px;
+          border-bottom: 1px solid #ddd;
+          font-size: 16px;
+          border-radius: 5px;
+
+          
+      }
+      .bookmark:hover{
+          color: #1ce;
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      .bookmark:first-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+      }
+
+      .bookmark:last-child {
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        border-bottom: 0;
+      }
+
+     
+      
+    </style>
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div class="floater content">
+        <form class="bookmark-form">
+      <div class="floater-top">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="whats on your mind"
+        />
+      </div>
+
+      <div class="floater-bottom">
+        <button type="submit" class="btn btn-primary btn-sm">Add</button>
+      </div>
+    </form>
+    </div>
+
+    <div class="bookmarks-list content">
+    </div>
+
+
+    <!--     javascript               -->
+
+    <script>
+      //grab everything we need
+      const body = document.body;
+      const input = document.querySelector("input[type=text]");
+      const overlay = document.querySelector(".overlay");
+
+      //function
+      function showFloater() {
+        body.classList.add("show-floater");
+      }
+
+      function closeFloater() {
+        body.classList.remove("show-floater");
+      }
+
+      //our eventlisteners
+      input.addEventListener("focus", showFloater);
+      input.addEventListener("focusout", closeFloater);
+      overlay.addEventListener("click", closeFloater);
+
+      //=======================================
+
+    //grab what we need
+    const bookmarksList = document.querySelector('.bookmarks-list');
+    const bookmarkForm = document.querySelector('.bookmark-form');
+    const bookmarkInput = document.querySelector('input[type=text]');
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    
+    fillBookmarksList(bookmarks);
+
+    //function
+    function bookmarkCreate(event){
+        event.preventDefault();
+        // add a new bookmark to the bookmark 
+        const title = bookmarkInput.value;
+        const bookmark = {
+            title: title
+        };
+        bookmarks.push(bookmark);
+        fillBookmarksList(bookmarks);
+        storeBookmarks(bookmarks);
+        bookmarkForm.reset();
+       
+
+
+        console.table(bookmarks);
+        // const bookmark = document.createElement('a');
+        // bookmark.className = 'bookmark';
+        // bookmark.innerText = title;
+        // bookmark.href = '#';
+        // bookmark.target = '_blank';
+        // bookmarksList.appendChild(bookmark);
 
         
-    </style>
-</head>
-<body>
-    <div class="overlay"></div>
-    <div class="floater">
-        <div class="floater-top">
-            <input type="text" class="form-control" placeholder="whats on your mind">
-        </div>
+    }
 
-        <div class="floater-bottom">
-            <button type="button" class="btn btn-primary btn-sm">Add</button>
-        </div>
-    </div>
-</body>
+    //function for array of bookmarks
+    function fillBookmarksList(bookmarks = []){
+        const bookmarksHtml = bookmarks.map((bookmark) => {
+            return `
+            <a href="#" class="bookmark">
+                ${bookmark.title}
+                </a>
+            `
+        }).join('');
+        bookmarksList.innerHTML = bookmarksHtml;
+
+        
+
+        // let bookmarksHtml = '';
+        // for (let i = 0; i < bookmarks.lenght; i++){
+        //     bookmarksHtml +=`
+        //     <a href="#" class="bookmark">
+        //         ${bookmarks[i].title}
+        //         </a>
+        //     `;
+        // }
+
+        // console.log(bookmarksHtml);
+
+       
+
+    }
+
+    
+    function storeBookmarks(bookmarks = []) { 
+            localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+        }
+       
+    
+    //add event listerner
+     bookmarkForm.addEventListener('submit', bookmarkCreate)
+    </script>
+  </body>
 </html>
+;
