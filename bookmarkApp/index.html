@@ -117,6 +117,17 @@
         border-bottom: 0;
       }
 
+
+
+
+
+      /* .bookmark .img {
+        background-color:#DDD;
+        border-radius: 3px;
+          background-image: url("https://twitter.com/ebuka_achonwa/photo");
+          background-size: cover;
+          width: 10px;
+      } */
      
       
     </style>
@@ -206,7 +217,9 @@
         const bookmarksHtml = bookmarks.map((bookmark) => {
             return `
             <a href="#" class="bookmark">
-                ${bookmark.title}
+              <div class="title"></div>
+                <div class="title">${bookmark.title}</div>
+                <span class="glyphicon glyphicon-remove"></div>
                 </a>
             `
         }).join('');

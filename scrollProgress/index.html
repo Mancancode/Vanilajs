@@ -59,9 +59,9 @@
       function fillScrollLine() {
         const windowHeight = window.innerHeight;
         const fullHeight = document.body.clientHeight;
-        const scrolled = window.scrolly;
+        const scrolled = window.scrollY;
         const percentScrolled = (scrolled / (fullHeight - windowHeight)) * 100;
-        scrollLine.style.with = `${percentScrolled}%`;
+        scrollLine.style.width = `${percentScrolled}%`;
       }
 
       //add event lesteners

@@ -18,7 +18,9 @@
     <div class="jumbotron text-center" >
 
         <div class="timer">
-            <span>00<span class="menutes">:</span class="seconds">00</span>
+            <div class="timer">
+                <span class="minutes">00</span>:<span class="seconds">00</span>
+              </div>
         </div>
     
         <div class="timer-button">
@@ -84,7 +86,7 @@
     }
 
     function pad(number){
-        return (number < 10) ? '0' + number : number;          //tenary operator
+        return (number < 10) ? '0' + number : number;                //tenary operator
         // if (number < 10){
         //     return '0' + number;
         // } else{
