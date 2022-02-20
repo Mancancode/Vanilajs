@@ -88,7 +88,7 @@
          
       }
       .bookmark{
-          display: block;
+          display: flex;
           background: #fff;
           color: #999;
           transition: 0.3s ease all;
@@ -96,8 +96,7 @@
           border-bottom: 1px solid #ddd;
           font-size: 16px;
           border-radius: 5px;
-
-          
+          position:relative;
       }
       .bookmark:hover{
           color: #1ce;
@@ -117,18 +116,37 @@
         border-bottom: 0;
       }
 
-
-
-
-
-      /* .bookmark .img {
+      .bookmark .img {
         background-color:#DDD;
         border-radius: 3px;
-          background-image: url("https://twitter.com/ebuka_achonwa/photo");
+          background-image: url 
+          ('https://pbs.twimg.com/profile_images/1406094070557122560/oM-OEGey_400x400.jpg');
           background-size: cover;
-          width: 10px;
-      } */
+          width: 120px;
+          height:60px; 
+          margin-right: 20px;
+          background-position: top center ;
+      }
+
+      .bookmark .title{
+        display: flex;
+        align-items: center;
+      }
      
+
+      .bookmark  .glyphicon-remove{
+        display:absolute;
+        top:10px;
+        left: 30px;
+        color: #eee;
+        font-size: 12px;
+        transition: 0.3s ease-out color;
+        cursor: pointer;
+      }
+
+      .bookmark:hover .glyphicon-remove{
+        color: #aaa;
+      }
       
     </style>
   </head>
@@ -173,7 +191,7 @@
 
       //our eventlisteners
       input.addEventListener("focus", showFloater);
-      input.addEventListener("focusout", closeFloater);
+      // input.addEventListener("focusout", closeFloater);
       overlay.addEventListener("click", closeFloater);
 
       //=======================================
@@ -183,25 +201,39 @@
     const bookmarkForm = document.querySelector('.bookmark-form');
     const bookmarkInput = document.querySelector('input[type=text]');
     const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    const apiUrl = 'https://opengraphi.io/api/1.0/site';
+    const appId = '58858c7bcf07b61e64257391';
+
+    // const myurl = encodeURIComponent ('https://lo-victoria.com/why-every-developer-should-start-blogging');
     
+
     fillBookmarksList(bookmarks);
 
+
     //function
-    function bookmarkCreate(event){
+    function bookmarkCreate(e){
         event.preventDefault();
-        // add a new bookmark to the bookmark 
-        const title = bookmarkInput.value;
-        const bookmark = {
-            title: title
-        };
-        bookmarks.push(bookmark);
+
+
+     const url = encodeURIComponent(bookmarkInput.value);
+        //add a new bookmark to the bookmark 
+    fetch(`${apiUrl}/${url}?app_id=${appId}`)
+    .then(response => response.json())
+    .then(data => {
+      const bookmark = {
+        title: data.hybridGraph.title,
+        image: data.hybridGraph.image,
+        link: data.hybridGraph.url,
+      };
+      bookmarks.push(bookmark);
         fillBookmarksList(bookmarks);
         storeBookmarks(bookmarks);
         bookmarkForm.reset();
-       
+    });
 
-
-        console.table(bookmarks);
+        // add a new bookmark to the bookmark 
+      
+        // console.table(bookmarks);
         // const bookmark = document.createElement('a');
         // bookmark.className = 'bookmark';
         // bookmark.innerText = title;
@@ -214,14 +246,17 @@
 
     //function for array of bookmarks
     function fillBookmarksList(bookmarks = []){
-        const bookmarksHtml = bookmarks.map((bookmark) => {
+        const bookmarksHtml = bookmarks.map((bookmark, i) => {
             return `
-            <a href="#" class="bookmark">
-              <div class="title"></div>
+            <a href="${bookmark.link}" class="bookmark data-id=${i}">
+
+              <div class="img" style="background-image:url('${bookmark.image}'')"></div>
+
                 <div class="title">${bookmark.title}</div>
-                <span class="glyphicon glyphicon-remove"></div>
+
+                <span class="glyphicon glyphicon-remove"></span>
                 </a>
-            `
+            `;
         }).join('');
         bookmarksList.innerHTML = bookmarksHtml;
 
@@ -242,6 +277,16 @@
 
     }
 
+    function bookmarkRemove (e){
+      console.log(e);
+      if (!e.target.matches('.glyphicon-remove')) return;
+      const index = e.target.parentNode.dataset.id;
+      bookmarks.splice(index, 1);
+      fillBookmarksList(bookmarks);
+      storeBookmarks(bookmarks);
+      console.log('index');
+    }
+
     
     function storeBookmarks(bookmarks = []) { 
             localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -250,6 +295,7 @@
     
     //add event listerner
      bookmarkForm.addEventListener('submit', bookmarkCreate)
+     bookmarksList.addEventListener('click', bookmarkRemove)
     </script>
   </body>
 </html>
