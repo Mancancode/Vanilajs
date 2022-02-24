@@ -1,0 +1,46 @@
+.container-1, .container-2, .container-3 {
+    border: 1px solid black;
+    width: 75%;
+    margin: 0 auto;
+    text-align: center;
+}
+.btn-flexbox-1{
+    display: flex;
+    border: 1px solid black;
+    padding: 10px;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.btn-flexbox-1 div {
+    display: flex;
+    padding: 10px;
+    border: 1px solid black;
+    align-items: center;
+}
+
+ h2{
+    align-items: center;
+    justify-content: center;
+}
+ 
+.flex-box-container-2{
+    display: flex;
+    border: 1px solid blue;
+    margin-bottom: 10px; 
+    height: 150px;
+    justify-content: space-around;
+    padding: 10px 0px;
+}
+
+.flex-box-container-2 img{
+    border: 1px solid green;
+    margin: 10px;
+    box-shadow: 0px 10px 50px rgba(0, 0, 0.2);
+}
+
+.flex-box-rps img:hover{
+    box-shadow: 0px 10px 50px rgba(37, 50, 233, 1 );
+}
+
+
