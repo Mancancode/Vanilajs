@@ -77,11 +77,25 @@ function rpsFrontEnd(humanSelect, botSelect, finalMassage) {
     var imagesDatabase = {
         'rock': document.getElementById('rock').src,
         'paper' : document.getElementById('paper').src,
-        'scissors': document.getElementById('scissors').srC
+        'scissors': document.getElementById('scissors').src
     }
 
     // lets remove all the image
     document.getElementById('rock').remove();
     document.getElementById('paper').remove();
-    document.getElementById('paper').remove();
-}
+    document.getElementById('scissors').remove();
+
+    var humanDiv = document.createElement('div');
+    var botDiv = document.createElement('div');
+    var massageDiv = document.createElement('div');
+
+
+    humanDiv.innerHTML = "<img src='" + imagesDatabase[humanSelect] + "' height=150 width=150 style=box-shadow: 0px 10px 50px rgba(37, 58, 233, 1);'>"
+    humanDiv.innerHTML = "<h1 style='color: " + finalMassage['color'] + "'; font-size: 60px; padding: 30px; '>" + finalMassage['massage'] + "</h1>"
+    botDiv.innerHTML = "<img src='" + imagesDatabase[botSelect] + "' height=150 width=150 style=box-shadow: 0px 10px 50px rgba(243, 34, 233, 1);'>"
+
+
+    document.getElementById('flex-box-rps-div').appendChild(humanDiv);
+    document.getElementById('flex-box-rps-div').appendChild(massageDiv);
+    document.getElementById('flex-box-rps-div').appendChild(botDiv);
+}   
