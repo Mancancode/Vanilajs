@@ -76,64 +76,67 @@
     </div>
 
     <div class="container-4">
-      <h1 id="change-my-color">
-        Challange 4: Change the Color of all Button
-      </h1>
+      <h1 id="change-my-color">Challange 4: Change the Color of all Button</h1>
       <div class="flex-box-pick-color">
         <form action="select">
-          <select name="backdrop" id="background" onchange="buttonColorChange(this)">
-          <option value="random"> Random</option>
-          <option value="red">red</option>
-          <option value="green">greeen</option>
-          <option value="reset">reset</option>
+          <select
+            name="backdrop"
+            id="background"
+            onchange="buttonColorChange(this)"
+          >
+            <option value="random">Random</option>
+            <option value="red">red</option>
+            <option value="green">greeen</option>
+            <option value="reset">reset</option>
           </select>
         </form>
         <button class="btn btn-primary" name="button">Facebook</button>
         <button class="btn btn-danger" name="button">Youtube</button>
         <button class="btn btn-success" name="button">Whatsapp</button>
         <button class="btn btn-warning" name="button">Google</button>
-
       </div>
 
-      <div class="colorBtn">
-       
-      </div>
+      <div class="colorBtn"></div>
     </div>
 
-  <div class="container-5">
-    <h2>Challange 5: Black Jack game</h2>
-    <h3><span id="flexbox-play">Lat's Play</span></h3>
-    <div class="flex-container">
-      <div class="your-box">
-        <h2>You: <span id="your-bj-result">0</span></h2>
-      </div>
-      <div class="dealer-box">
-        <h2>Dealer: <span id="dealer-bj-result">0</span></h2>
-      </div>
-      <div class="btn-play">
-        <div>
-          <button id="hit-btn" class="btn btn-primary">Hit</button>
-          <button id="stand-btn" class="btn btn-danger"> Stand</button>
-          <button id="deal-btn" class="btn btn-success" > Deal</button>
+    <div class="container-5">
+      <h2>Challange 5: Black Jack game</h2>
+      <h3><span id="flexbox-play">Lat's Play</span></h3>
+      <div class="flex-container">
+        <div class="your-box">
+          <h2>You: <span id="your-bj-result">0</span></h2>
         </div>
-       
-      </div>
-      <div class="btn-table-container">
-        <div>
-          <table>
-            <tbody>
-              <th>Wins</th>
-              <td>0</td>
-              <th>losses</th>
-              <td>0</td>
-              <th>Draws</th>
-              <td>0</td>
-            </tbody>
-          </table>
+        <div class="dealer-box">
+          <h2>Dealer: <span id="dealer-bj-result">0</span></h2>
+        </div>
+        <div class="btn-play">
+          <div>
+            <button id="hit-btn" class="btn btn-primary mr-2">Hit</button>
+            <button id="stand-btn" class="btn btn-danger mr-2">Stand</button>
+            <button id="deal-btn" class="btn btn-success">Deal</button>
+          </div>
+        </div>
+        <div class="btn-table-container">
+          <div>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Wins</th>
+                  <th>losses</th>
+                  <th>Draws</th>
+                </tr>
+
+                <tr>
+                  <td id="win">0</td>
+                  <td id="losses">0</td>
+                  <td id="draw ">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
     <script src="app.js"></script>
   </body>
