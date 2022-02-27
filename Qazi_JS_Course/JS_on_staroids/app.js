@@ -151,3 +151,50 @@ function buttonRandom () {
        all_buttons[i].classList.add(choices[randomNumber]);
    }
 }
+
+//    Challenge 5: blackjack
+
+let blackJackGame ={
+  'you': {'scoreSpan': '#your-bj-result' , 'div': '#your-box', 'score': 0},
+  'dealer': {'scoreSpan': '#dealer-bj-result' , 'div': '#dealer-box', 'score': 0},
+  'cards': ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'K ', 'J', 'Q', 'A'],
+};
+
+const YOU = blackJackGame['you'];
+const DEALER = blackJackGame['dealer'];
+
+const hitSound = new Audio('bj/sound/soundNmae');
+
+document.querySelector('#hit-btn').addEventListener('click', blackjackHit);
+
+document.querySelector('#deal-btn').addEventListener('click', blackjackDeal);
+
+function blackjackHit() {
+  showCard(YOU);
+}
+
+function showCard(){
+  let cardImg = document.createElement('img');
+  cardImg.src = 'bj/images/lady.jpg';
+  let cardImgShow = document.querySelector(YOU['div']);
+  cardImgShow.appendChild(cardImg);
+  
+}
+
+function blackjackDeal(){
+  let yourImages = document.querySelector('#your-box').querySelectorAll('img');
+  
+  
+for (i=0; i < yourImages.lenght; i++) {
+  yourImages[i].romove();
+}
+
+for (i=0; i < dealerImages.lenght; i++) {
+  dealerImages[i].remove();
+}
+
+}
+
+
+
+
