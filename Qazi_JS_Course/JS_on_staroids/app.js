@@ -176,7 +176,7 @@ function blackjackHit() {
 function showCard(){
   let cardImg = document.createElement('img');
   cardImg.src = 'bj/images/2.png';
-  document.querySelector(YOU['#div-btn']).appendChild(cardImg);
+  document.querySelector(YOU['div']).appendChild(cardImg);
   
 }
 
