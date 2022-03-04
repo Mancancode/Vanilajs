@@ -219,8 +219,9 @@ function showCard(activePlayer) {
   if (activePlayer["score"] <= 21) {
     let cardImg = document.createElement("img");
     cardImg.src = `bj/images/${card}.png`;
+    console.log('cardImg');
     document.querySelector(activePlayer["div"]).appendChild(cardImg);
-    hitSound.play();
+    hitSound.play(); 
   }
 }
 
