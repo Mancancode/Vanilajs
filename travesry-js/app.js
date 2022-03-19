@@ -83,13 +83,13 @@ Books.prototype.geTAge = function() {
 const book01 = new Books ( 'Barack Obama', 'Black man in White House', '2014', '261');
 const book02 = new Books ( 'Donal Trumph', 'Presidents Business', '2019', '191');
 
-console.log(book01.getSummary());
+// console.log(book01.getSummary());
 
 
 
 // ======= Inheritance ======================  //
 
-function Books (Author, Title, Year, Pages) {
+function Books (Author, Title, Year) {
     this.Author = Author;
     this.Title = Title;
     this.Year =Year;
@@ -97,7 +97,7 @@ function Books (Author, Title, Year, Pages) {
 
 
 Books.prototype.getSummary = function() {
-    return `${book1.title} was written in the year ${book1.year} by ${book1.Author}`;
+    return `${Books.Title} was written in the year ${Books.Year} by ${Books.Author}`;
 }
 
 //Magazine constructor 
@@ -107,7 +107,61 @@ Books.prototype.getSummary = function() {
      this.month =  month;
 }
 
+//inherit prototype 
+Magazine.prototype = Object.create(Books.prototype); 
+
 //Instanciate Magazine
 const mag1 = new Magazine ('Arrows', 'Chris Bands', '2018', ('Feb '+24+'th'));
 
-console.log(mag1);
+// console.log(mag1.getSummary());
+
+
+
+// ========== ===============  ES6 Type =======  =========  ============  //
+
+class Book6 {
+    constructor(title, author, year ) {
+        this.title = title;
+        this.author = author;
+        this.year = year;
+
+    }
+
+    getSummary(){
+        return (`${this.title} was written by ${this.author} in ${this.year}` );
+    }  
+}
+
+//instantiate 
+const Book1 = new Books ('Wallows', 'Ric Bono','1991');
+
+    // console.log(Book1);
+
+    // ========= ========   ======== SubClasses ======= ======== ======= //
+
+    class Book7 {
+        constructor(title, author, year ) {
+            this.title = title;
+            this.author = author;
+            this.year = year;
+    
+        }
+    
+        getSummary(){
+            return (`${this.title} was written by ${this.author} in ${this.year}` );
+        }  
+
+    }    
+
+    class Magaziner extends Book7 {
+        constructor(title, author, year, month){
+        super(title, author, year);
+        this.month = month;
+        }
+    }
+
+    //instanciate 
+
+    const mag2  = new magazines ('Winnercul', 'Rich wales', '2019', 'March');  
+
+    console.log(mag1.getSummary);
