@@ -101,17 +101,17 @@ Books.prototype.getSummary = function() {
 }
 
 //Magazine constructor 
- function Magazine(Title, Autor, Year, month){
+ function Magazine1(Title, Autor, Year, month){
      Books.call(this,Title, Autor, Year, );
 
      this.month =  month;
 }
 
 //inherit prototype 
-Magazine.prototype = Object.create(Books.prototype); 
+Magazine1.prototype = Object.create(Books.prototype); 
 
 //Instanciate Magazine
-const mag1 = new Magazine ('Arrows', 'Chris Bands', '2018', ('Feb '+24+'th'));
+const mag1 = new Magazine1 ('Arrows', 'Chris Bands', '2018', ('Feb '+24+'th'));
 
 // console.log(mag1.getSummary());
 
@@ -153,7 +153,7 @@ const Book1 = new Books ('Wallows', 'Ric Bono','1991');
 
     }    
 
-    class Magaziner extends Book7 {
+    class Magazine2 extends Book7 {
         constructor(title, author, year, month){
         super(title, author, year);
         this.month = month;
@@ -162,6 +162,17 @@ const Book1 = new Books ('Wallows', 'Ric Bono','1991');
 
     //instanciate 
 
-    const mag2  = new magazines ('Winnercul', 'Rich wales', '2019', 'March');  
+    const mag2  = new Magazine2 ('Winnercul', 'Rich wales', '2019', 'March');  
 
-    console.log(mag1.getSummary);
+    // console.log(mag1.getSummary);
+
+    function calculatePrice(price, taxes, description){
+        taxes = taxes || 0.05
+        discription = description || "Default item"
+        const total = price * (1 + taxes)
+        console.log(`${description} with Tax: $${total}`)
+    }
+
+    calculatePrice(100, 0.07, "My item");
+    calculatePrice(100, 0, "My other item")
+    calculatePrice(100, undefined, "")
